@@ -10,10 +10,8 @@ def pythagorean_triples(n):
             for k in range(j + 1, n + 1):
                 if i * i + j * j == k * k:
                     # Encode the constraint using Boolean variables
-                    formula.append([-i, -j, k])
-                    formula.append([-i, j, -k])
-                    formula.append([i, -j, -k])
                     formula.append([i, j, k])
+                    formula.append([-i, -j, -k])
 
     # Solve the SAT formula
     with Glucose3(bootstrap_with=formula.clauses) as solver:
